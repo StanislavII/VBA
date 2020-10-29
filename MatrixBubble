@@ -1,0 +1,48 @@
+Sub main2()
+Dim mat(1 To 3, 1 To 3) As Integer
+Dim i As Integer
+Dim j As Integer
+For i = 1 To 3
+For j = 1 To 3
+mat(i, j) = Cells(i, j)
+Next
+Next
+Dim n As Integer
+Dim m As Integer
+Dim d As Integer
+d = 1
+Do While (d = 1)
+For n = 1 To 3
+For m = 1 To 2
+Dim s As Integer
+Dim s1 As Integer
+If mat(m, n) > mat(m + 1, n) Then
+s = mat(m, n): mat(m, n) = mat(m + 1, n): mat(m + 1, n) = s: d = d + 1
+End If
+If m = 2 Then
+If n <> 3 Then
+If mat(m + 1, n) > mat(1, n + 1) Then
+s1 = mat(1, n + 1): mat(1, n + 1) = mat(m + 1, n): mat(m + 1, n) = s1: d = d + 1
+End If
+End If
+End If
+Next
+Next
+If d <> 1 Then
+d = 1
+Else: d = 0
+End If
+Loop
+Dim prompt As String
+Dim i1 As Integer
+Dim j1 As Integer
+prompt = ""
+For i1 = 1 To UBound(mat, 1)
+  For j1 = 1 To UBound(mat, 2)
+   prompt = prompt & mat(i1, j1) & " "
+  Next j1
+  prompt = prompt & Chr(13)
+Next i1
+MsgBox prompt
+End Sub
+
